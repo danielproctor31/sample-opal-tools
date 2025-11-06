@@ -22,11 +22,11 @@ public class DateParameters
 }
 
 [Display(
-    Name = "greeting", 
+    Name = "dans_greeting", 
     Description = "Greets a person in a random language (English, Spanish, or French)")]
 public class GreetingTool(ILogger<GreetingTool> logger)
 {
-    [OpalTool(name: "Greeting")]
+    [OpalTool(name: "Dan's .NET Greeting")]
     public Task<object> ExecuteAsync(GreetingParameters parameters, OpalToolContext context)
     {
         // Get parameters
@@ -68,54 +68,54 @@ public class GreetingTool(ILogger<GreetingTool> logger)
         });
     }
 }
-
-[Display(
-    Name = "todays-date", 
-    Description = "Returns today's date in the specified format"
-)]
-public class TodaysDateTool(ILogger<TodaysDateTool> logger)
-{
-    [OpalTool(name: "Todays Date")]
-    public Task<object> ExecuteAsync(DateParameters parameters, OpalToolContext context)
-    {
-        // Get parameters
-        var format = parameters.Format;
-
-        logger.LogInformation("Today's date tool called with format: {Format}", format);
-
-        // Get today's date
-        var today = DateTime.Now;
-
-        // Format the date
-        var formattedDate = today.ToString(format);
-
-        logger.LogInformation("Returning formatted date: {Date}", formattedDate);
-
-        return Task.FromResult<object>(new
-        {
-            date = formattedDate,
-            format,
-            timestamp = ((DateTimeOffset)today).ToUnixTimeSeconds()
-        });
-    }
-}
-[Display(
-    Name = "auth-example", 
-    Description ="Example of a tool that requires authentication")
-]
-public class AuthExampleTool(ILogger<AuthExampleTool> logger)
-{
-    [OpalAuthorization("google", "calendar")]
-    [OpalTool(name: "Auth Example")]
-    public Task<object> ExecuteAsync(GreetingParameters parameters, OpalToolContext context)
-    {
-        logger.LogInformation("Auth example tool called with name: {Name}", parameters.Name);
-        logger.LogInformation("Auth provider: {Provider}", context.AuthorizationData?.Provider ?? "none");
-
-        return Task.FromResult<object>(new
-        {
-            message = $"Hello, {parameters.Name}! You are authenticated with {context.AuthorizationData?.Provider ?? "no provider"}.",
-            authProvided = context.AuthorizationData != null
-        });
-    }
-}
+//
+// [Display(
+//     Name = "todays-date", 
+//     Description = "Returns today's date in the specified format"
+// )]
+// public class TodaysDateTool(ILogger<TodaysDateTool> logger)
+// {
+//     [OpalTool(name: "Todays Date")]
+//     public Task<object> ExecuteAsync(DateParameters parameters, OpalToolContext context)
+//     {
+//         // Get parameters
+//         var format = parameters.Format;
+//
+//         logger.LogInformation("Today's date tool called with format: {Format}", format);
+//
+//         // Get today's date
+//         var today = DateTime.Now;
+//
+//         // Format the date
+//         var formattedDate = today.ToString(format);
+//
+//         logger.LogInformation("Returning formatted date: {Date}", formattedDate);
+//
+//         return Task.FromResult<object>(new
+//         {
+//             date = formattedDate,
+//             format,
+//             timestamp = ((DateTimeOffset)today).ToUnixTimeSeconds()
+//         });
+//     }
+// }
+// [Display(
+//     Name = "auth-example", 
+//     Description ="Example of a tool that requires authentication")
+// ]
+// public class AuthExampleTool(ILogger<AuthExampleTool> logger)
+// {
+//     [OpalAuthorization("google", "calendar")]
+//     [OpalTool(name: "Auth Example")]
+//     public Task<object> ExecuteAsync(GreetingParameters parameters, OpalToolContext context)
+//     {
+//         logger.LogInformation("Auth example tool called with name: {Name}", parameters.Name);
+//         logger.LogInformation("Auth provider: {Provider}", context.AuthorizationData?.Provider ?? "none");
+//
+//         return Task.FromResult<object>(new
+//         {
+//             message = $"Hello, {parameters.Name}! You are authenticated with {context.AuthorizationData?.Provider ?? "no provider"}.",
+//             authProvided = context.AuthorizationData != null
+//         });
+//     }
+// }

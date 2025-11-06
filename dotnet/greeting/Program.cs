@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpalToolService();
 builder.Services.AddOpalTool<GreetingTool>();
-builder.Services.AddOpalTool<TodaysDateTool>();
-builder.Services.AddOpalTool<AuthExampleTool>();
+// builder.Services.AddOpalTool<TodaysDateTool>();
+// builder.Services.AddOpalTool<AuthExampleTool>();
 
 var app = builder.Build();
 
