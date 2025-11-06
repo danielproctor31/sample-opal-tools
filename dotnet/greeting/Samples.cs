@@ -26,6 +26,7 @@ public class DateParameters
     Description = "Greets a person in a random language (English, Spanish, or French)")]
 public class GreetingTool(ILogger<GreetingTool> logger)
 {
+    [OpalTool(name: "Greeting")]
     public Task<object> ExecuteAsync(GreetingParameters parameters, OpalToolContext context, CancellationToken cancellationToken)
     {
         // Get parameters
@@ -74,6 +75,7 @@ public class GreetingTool(ILogger<GreetingTool> logger)
 )]
 public class TodaysDateTool(ILogger<TodaysDateTool> logger)
 {
+    [OpalTool(name: "Todays Date")]
     public Task<object> ExecuteAsync(DateParameters parameters, OpalToolContext context, CancellationToken cancellationToken)
     {
         // Get parameters
@@ -104,6 +106,7 @@ public class TodaysDateTool(ILogger<TodaysDateTool> logger)
 public class AuthExampleTool(ILogger<AuthExampleTool> logger)
 {
     [OpalAuthorization("google", "calendar")]
+    [OpalTool(name: "Auth Example")]
     public Task<object> ExecuteAsync(GreetingParameters parameters, OpalToolContext context, CancellationToken cancellationToken)
     {
         logger.LogInformation("Auth example tool called with name: {Name}", parameters.Name);
