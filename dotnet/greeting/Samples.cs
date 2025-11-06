@@ -23,10 +23,10 @@ public class DateParameters
 
 [Display(
     Name = "dans_greeting", 
-    Description = "Greets a person in a random language (English, Spanish, or French)")]
+    )]
 public class GreetingTool(ILogger<GreetingTool> logger)
 {
-    [OpalTool(name: "Dan's .NET Greeting")]
+    [OpalTool(name: "dans_greeting")]
     public Task<object> ExecuteAsync(GreetingParameters parameters, OpalToolContext context)
     {
         // Get parameters
