@@ -21,9 +21,7 @@ public class DateParameters
     public string Format { get; set; } = "yyyy-MM-dd";
 }
 
-[Display(
-    Name = "dans_greeting", 
-    )]
+[Display(Name = "dans_greeting")]
 public class GreetingTool(ILogger<GreetingTool> logger)
 {
     [OpalTool(name: "dans_greeting")]
